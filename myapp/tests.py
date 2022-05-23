@@ -14,7 +14,7 @@ class First(TestCase):
         self.assertEquals(resolve(url).func,form)
 
     def test_url_exists(self):
-        response = self.client.get("/in/")
+        response = self.client.get("/news/")
         self.assertEqual(response.status_code, 200)
         
         
@@ -32,5 +32,5 @@ class First(TestCase):
 
 
     def test_setUp(self):
-        MenPrize.objects.create(fullnames="lion", medaltype="roar")
-        MenPrize.objects.create(fullnames="cat", medaltype="meow")
+        response = self.client.get("/olympics/")
+        self.assertEqual(response.status_code, 200)

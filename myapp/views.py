@@ -52,13 +52,15 @@ def signin(request):
         data = regis.objects.filter(username=username)
         for q in data:
             if q.password == password:
-                return redirect('/in/')
+                return redirect('/')
     return redirect('/register/')
 
 
 
+
+
 def page(request):
-    return render(request, 'myapp/cart.html')
+    return render(request, 'myapp/cart.html', {"user":request.user})
 
 
 
@@ -132,3 +134,6 @@ def show_post(request, post_id):
     post = get_object_or_404(Post, slug=post_id)
     context = {'post': post}
     return render(request, 'myapp/oop.html', context=context)
+
+
+
